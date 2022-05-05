@@ -15,6 +15,7 @@ import Loginadmin from "./Loginadmin";
 import Frontpageadmin from "./Frontpageadmin";
 import Stafftable from "./Stafftable";
 import Tableview from "./Tableview";
+import Tableviewstaff from "./Tableviewstaff";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
       <Route path="/frontpageadmin" element={<Frontpageadmin />}/>
       <Route path="/stafftable" element={<Stafftable />}/>
       <Route path="/tableview" element={<Tableview />}/>
+      <Route path="/tableviewstaff" element={<Tableviewstaff />}/>
      
      
     </Routes>

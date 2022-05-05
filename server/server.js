@@ -168,8 +168,6 @@ console.log(table)
 app.post("/createtable",async(req,res)=>{
   const newTimetable = new TimetableSchema({
     timeperiod: req.body.array,
-                
-             
                 department: req.body.department,
                 year: req.body.year,
                 semester: req.body.semester,
@@ -183,7 +181,16 @@ app.post("/createtable",async(req,res)=>{
   // res.json({msg:"user already exist"})
 })
 
-
+app.post("/edittable",async(req,res)=>{
+  let department= req.body.department
+  let year= req.body.year
+  let  semester= req.body.semester
+   let section = req.body.section
+  const Timetable = await TimetableSchema.findOneAndUpdate({ $and: [ { department:department }, { year:year } , {semester:semester} , { section:section } ] },{timeperiod:req.body.array});
+if(Timetable){
+  res.json({msg:"success"})
+}
+})
 
 
 

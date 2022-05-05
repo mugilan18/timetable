@@ -30,7 +30,7 @@ const Frontpagestaff = () => {
     const[timetable,seTimetable]=useState([])
     const navigate = useNavigate();
     const view =(cls)=>{
-      navigate("/tableview",{state:cls})
+      navigate("/tableviewstaff",{state:cls})
     }
 
   return (
