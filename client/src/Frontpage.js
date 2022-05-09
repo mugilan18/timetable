@@ -1,10 +1,13 @@
-import { Button, Grid } from '@mui/material'
+import {Grid } from '@mui/material'
 import React, { useEffect,useState } from 'react'
 import {useNavigate} from 'react-router-dom';
 import MaterialTable from 'material-table'
 import { styled } from '@mui/material/styles';
 import "./index.css"
-
+import Button from '@mui/material/Button';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
 const Div = styled('div')(({ theme }) => ({
   ...theme.typography.button,
 //   backgroundColor: theme.palette.background.paper,
@@ -47,11 +50,20 @@ headers: {
     },[])
   return (
     <div>
-        {console.log(user)}
-        <Div>
-    <Button variant='contained' onClick={logout}>Logout</Button>
 
-        </Div>
+      <AppBar position="static" style={{backgroundColor:"#4C4B5D"}}>
+        <Toolbar>
+      
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Time Table
+          </Typography>
+          
+          <Typography variant="h6" component="div" onClick={logout}>
+            logout
+          </Typography>
+         
+        </Toolbar>
+      </AppBar>
     
    <br/>
    <br/>
@@ -64,7 +76,7 @@ headers: {
     <Grid item><h3> welcome {user.role}</h3></Grid>
     <Grid item> <h4>{user.name}</h4></Grid>
     </Grid>
-
+{tabledata.timeperiod ?
     <MaterialTable
       title="Time Table"
       columns={[
@@ -87,7 +99,11 @@ headers: {
       }}
   
     />
-
+    :
+    <div style={{padding:"50px"}}>
+   <h3>Admin Has Not provided Time Table Yet...</h3> 
+    </div>
+    }
 </div>
 
 

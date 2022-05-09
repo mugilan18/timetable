@@ -2,6 +2,7 @@ import React,{useEffect,useState} from 'react'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import {useNavigate} from 'react-router-dom';
+import { Card } from '@material-ui/core';
 
 
 const Loginstaff = () => {
@@ -44,10 +45,13 @@ const Loginstaff = () => {
     }
   return (
         <div>
+                  <Card style={{width:"200px",marginLeft:"calc(50% - 100px)",marginTop:"20px",padding:"20px"}}>
+
         <label>Email: </label>
         <TextField 
         id="outlined-basic" 
         variant="outlined"
+        size="small"
         value={email}
         onChange={(e)=>{setEmail(e.target.value)}}
         />
@@ -57,12 +61,14 @@ const Loginstaff = () => {
         <TextField 
         id="outlined-basic" 
         variant="outlined"
+        size="small"
         value={password}
         onChange={(e)=>{setPassword(e.target.value)}}
         />
         <br/>
         <br/>
         <Button variant="contained" onClick={loggin}>Login</Button>
+        </Card>
         </div>
   )
 }

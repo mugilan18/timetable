@@ -1,10 +1,14 @@
 import { useLocation } from 'react-router-dom';
 import React, { useEffect,useState } from 'react'
 import MaterialTable from 'material-table'
-
+import AppBar from '@mui/material/AppBar';
+import {useNavigate} from 'react-router-dom';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
 
 const Tableview = () => {
     const {state} = useLocation();
+    const navigate = useNavigate();
     const [tabledata,setTabledata]=useState({})
     useEffect(()=>{
         fetch(`http://localhost:4000/gettable`, {
@@ -29,14 +33,35 @@ const Tableview = () => {
             } );
 
     },[])
+    const logout =()=>{
+      localStorage.clear()
+      navigate("/")
+  }
   return (
      
     <div>
          {console.log(state)}
-
+         <AppBar position="static">
+        <Toolbar>
+      
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Time Table
+          </Typography>
+          
+          <Typography variant="h6" component="div" onClick={logout}>
+            logout
+          </Typography>
+         
+        </Toolbar>
+      </AppBar>
+         <div style={{padding:"50px"}}>
          <h2>Time Table</h2>
-         Department: {state.department}<br/> Year:{state.year}<br/> Semester:{state.semester}<br/> ssection:{state.section}
-         <MaterialTable
+     
+         
+         <h4>   Department: {state.department}<br/> Year:{state.year}<br/> Semester:{state.semester}<br/> ssection:{state.section}
+         </h4>
+         </div>
+         {tabledata.timeperiod? <MaterialTable
       title="Time Table"
       columns={[
         { title: 'Day', field: 'day' },
@@ -58,6 +83,12 @@ const Tableview = () => {
       }}
   
     />        
+    :
+    <div style={{padding:"50px"}}>
+   <h3>Admin Has Not provided Time Table Yet...</h3> 
+    </div>}
+       
+        
         </div>
   )
 }

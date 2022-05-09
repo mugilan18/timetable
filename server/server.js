@@ -7,6 +7,7 @@ const app = express()
 const UserSchema = require("./User");
 const StaffSchema = require("./Staff");
 const TimetableSchema = require("./Timetable");
+const nodemailer = require('nodemailer')
 app.use(cors() );
 app.use(express.json())
 mongoose
@@ -166,6 +167,34 @@ console.log(table)
 
 
 app.post("/createtable",async(req,res)=>{
+  console.log(req.body)
+
+
+  let message =`Time table has been created for Department : ${req.body.department} , year : ${req.body.year}, semester : ${req.body.semester}, section : ${req.body.section}` 
+
+let transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: "idhayaclg26@gmail.com",
+    pass: "idhaya123"
+  }
+});
+
+
+let mailOptions = {
+  from: "idhayaclg@gmail.com",
+  to: "devadharshinivasu@gmail.com",
+  subject: 'Time table',
+  text: message 
+};
+  const table = await TimetableSchema.findOne({ $and: [ { department:req.body.department }, { year:req.body.year } , {semester:req.body.semester} , { section:req.body.section } ] });
+console.log("hello",table)
+ if(table){
+  res.json({msg:"Table already exist" })
+ }
+ else{
+   
+
   const newTimetable = new TimetableSchema({
     timeperiod: req.body.array,
                 department: req.body.department,
@@ -175,9 +204,17 @@ app.post("/createtable",async(req,res)=>{
   });
   newTimetable
     .save()
-    .then(() => res.json({msg:"success"}))
+    .then(() => {
+      transporter.sendMail(mailOptions);
+      res.json({msg:"success"})
+    })
     .catch((err) => console.error(err));
-  console.log("user already exist")
+
+ }
+
+
+
+  // console.log("user already exist")
   // res.json({msg:"user already exist"})
 })
 
@@ -198,6 +235,44 @@ if(Timetable){
 
 
 
+app.get("/all",async(req,res)=>{
+  console.log("hello")
+  const table = await TimetableSchema.find();
+  if(table){
+    res.json(table)
+  }
+   
+  else {
+    res.json({error:"table not found"})
+  }
+})
+
+
+
+
+
+
 app.listen(4000,()=>{
   console.log("lisiterning to port 4000")
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

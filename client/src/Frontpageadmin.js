@@ -1,11 +1,17 @@
-import { Button, Grid } from '@mui/material'
+import {  Grid } from '@mui/material'
 import React,{useState} from 'react'
 import {useNavigate} from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import "./index.css"
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
-
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import Button from '@mui/material/Button';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
 const Div = styled('div')(({ theme }) => ({
   ...theme.typography.button,
 //   backgroundColor: theme.palette.background.paper,
@@ -69,7 +75,10 @@ const Frontpageadmin = () => {
         localStorage.clear()
         navigate("/")
     }
- 
+    const view =()=>{
+      localStorage.clear()
+      navigate("/alltable")
+  }
 
 
 
@@ -104,7 +113,7 @@ headers: {
 })
   .then( response => response.json() )
   .then( response => {console.log(response)
-    alert("success")
+    alert(response.msg)
   
   } );
     }
@@ -114,11 +123,22 @@ headers: {
   return (
     <div>
        
-        <Div>
-    <Button variant='contained' onClick={logout}>Logout</Button>
-
-        </Div>
     
+        <AppBar position="static">
+        <Toolbar>
+      
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Time Table
+          </Typography>
+          <Typography variant="h6" component="div" onClick={view}>
+            list view
+          </Typography>
+          <Typography variant="h6" component="div" onClick={logout}>
+            logout
+          </Typography>
+         
+        </Toolbar>
+      </AppBar>
    <br/>
    <br/>
     {/* <Grid
@@ -137,14 +157,65 @@ headers: {
   justifyContent="space-evenly"
   alignItems="center"
 >
-    <Grid item>Department <input value={department} onChange={e=>setDepartment(e.target.value)}></input></Grid>
-    <Grid item>Semester <input value={semester}  onChange={e=>setSemester(e.target.value)}></input></Grid>
-    <Grid item>Year <input  value={year} onChange={e=>setYear(e.target.value)}></input></Grid>
+    <Grid item>
+      <FormControl >
+  {/* <InputLabel id="demo-simple-select-label">Semester</InputLabel> */}
+  <label>Department</label>
+  <Select
+    
+    value={department}
+    size="small"
+    onChange={(e)=>{setDepartment(e.target.value)}}
+  >
+    <MenuItem value={"B.Sc Mathematics"}>B.Sc Mathematics</MenuItem>
+    <MenuItem value={"B.Sc Physics"}>B.Sc Physics</MenuItem>
+    <MenuItem value={"B.Com Corporate Secretrayship"}>B.Com Corporate Secretrayship</MenuItem>
+    <MenuItem value={"B.Sc Bio-Chemistry"}>B.Sc Bio-Chemistry</MenuItem>
+    <MenuItem value={"B.Com General"}>B.Com General</MenuItem>
+    <MenuItem value={"B.A English Literature"}>B.A English Literature</MenuItem>
+    <MenuItem value={"B.C.A"}>B.C.A</MenuItem>
+
+  </Select>
+</FormControl>
+      </Grid>
+    <Grid item>       <FormControl >
+  {/* <InputLabel id="demo-simple-select-label">Semester</InputLabel> */}
+  <label>semester</label>
+  <Select
+    
+    value={semester}
+    size="small"
+    onChange={(e)=>{setSemester(e.target.value)}}
+  >
+    <MenuItem value={1}>1</MenuItem>
+    <MenuItem value={2}>2</MenuItem>
+    <MenuItem value={3}>3</MenuItem>
+    <MenuItem value={4}>4</MenuItem>
+    <MenuItem value={5}>5</MenuItem>
+    <MenuItem value={6}>6</MenuItem>
+  </Select>
+</FormControl>
+</Grid>
+    <Grid item>         <FormControl >
+  {/* <InputLabel id="demo-simple-select-label">Semester</InputLabel> */}
+  <label>Year</label>
+  <Select
+    
+    value={year}
+    size="small"
+    onChange={(e)=>{setYear(e.target.value)}}
+  >
+    <MenuItem value={1}>1</MenuItem>
+    <MenuItem value={2}>2</MenuItem>
+    <MenuItem value={3}>3</MenuItem>
+    
+  </Select>
+</FormControl></Grid>
     <Grid item>Section <input  value={section} onChange={e=>setSection(e.target.value)}></input></Grid>
     </Grid>
 
 <br/><br/>
-<div style={{width:'800px'}}>
+<div style={{width:'800px',paddingLeft:"100px"}}>
     <table >
   <tr>
     <th>Day</th>
@@ -387,7 +458,8 @@ headers: {
 
 
 </table>
-<Button onClick={display}>submit</Button>
+<br/><br/>
+<Button onClick={display} variant="contained">submit</Button>
 </div>
 
 

@@ -4,15 +4,18 @@ import "./index.css"
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import { useState } from 'react';
-import { Button ,Grid} from '@mui/material';
+import {Grid} from '@mui/material';
+import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
 
 
 const Div = styled('div')(({ theme }) => ({
-  ...theme.typography.button,
+  // ...theme.typography.button,
 //   backgroundColor: theme.palette.background.paper,
   padding: theme.spacing(1),
   alignItems:"center",
@@ -32,10 +35,26 @@ const Frontpagestaff = () => {
     const view =(cls)=>{
       navigate("/tableviewstaff",{state:cls})
     }
+    const logout =()=>{
+      localStorage.clear()
+      navigate("/")
+  }
 
   return (
     <>
-    {console.log(user.class)}
+       <AppBar position="static">
+        <Toolbar>
+      
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Time Table
+          </Typography>
+        
+          <Typography variant="h6" component="div" onClick={logout}>
+            logout
+          </Typography>
+         
+        </Toolbar>
+      </AppBar>
     <Grid
     container
     direction="column"
@@ -46,7 +65,7 @@ const Frontpagestaff = () => {
       <Grid item> <h4>{user.name}</h4></Grid>
       </Grid>
 
-
+<div style={{ padding:"20px"}}>
       { 
                 user.class && user.class.map((cls, index) => {
                   return (
@@ -65,7 +84,7 @@ const Frontpagestaff = () => {
                   );
               })
                }
-
+</div>
 
 
 

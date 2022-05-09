@@ -8,10 +8,10 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import student from "./student.jpg"
-import logo from "./log3.png"
-import staffandadmin from './staffandadmin.jpg'
-
+import teacher from './teacher.jpg'
+import admin from './Admin.jpg'
 import { styled } from '@mui/material/styles';
+import logo from "./log3.png"
 
 const Div = styled('div')(({ theme }) => ({
   ...theme.typography.button,
@@ -21,13 +21,14 @@ const Div = styled('div')(({ theme }) => ({
   paddingLeft:"800px"
 }));
 
-const Home = () => {
+const Home2 = () => {
   return (
     
  
     <div style={{marginTop:"20px"}}>
-      
-     <Grid 
+    
+    
+    <Grid 
          container
          direction="row"
          justifyContent="space-around"
@@ -62,57 +63,56 @@ const Home = () => {
          alignItems="center"
         >
 
-
-  <Grid item >
+<Grid item >
   <Card sx={{ maxWidth: 345 }} >
       <img
         height="200"
         width="100%"
-        src={staffandadmin}
-        alt="staff and admin"
+        src={admin}
+        alt="Admin"
       />
     
       <CardContent style={{background:"grey"}}>
         <Typography gutterBottom variant="h5" component="div">
-          Staff and Admin
+          Admin
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          The managers of world's greatest resource
+          The managers of Time table Idhaya College
         </Typography>
       </CardContent>
       <CardActions>
-      <Link to="/staffandadmin" style={{textDecoration:'none'}}><Button  variant="contained" >Login</Button></Link>
+      <Link to="/loginadmin" style={{textDecoration:'none'}}><Button  variant="contained" >Login</Button></Link>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       </CardActions>
     </Card>
 </Grid>
 
   <Grid item >
-  <Card sx={{ maxWidth: 345 }}>
+  <Card sx={{ maxWidth: 345 }} >
       <img
-       
-       height="200"
-       width="100%"
-        src={student}
-        alt="Student"
+        height="200"
+        width="100%"
+        src={teacher}
+        alt="Teacher"
       />
+    
       <CardContent style={{background:"grey"}}>
         <Typography gutterBottom variant="h5" component="div">
-          Student
+          Teacher
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          The legends of next generation
+          The managers of world's greatest resource
         </Typography>
       </CardContent>
       <CardActions>
-          
-      <Link to="/login" style={{textDecoration:'none'}}><Button  variant="contained" >Login</Button></Link>
+      <Link to="/loginstaff" style={{textDecoration:'none'}}><Button  variant="contained" >Login</Button></Link>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <Link to="/register" style={{textDecoration:'none'}}><Button variant="contained" >Register</Button></Link>
-    
+        <Link to="/registerstaff" style={{textDecoration:'none'}}><Button variant='contained' >Register</Button></Link>
       </CardActions>
     </Card>
-  </Grid>
+</Grid>
+
+
   </Grid>
        
 
@@ -120,4 +120,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Home2
