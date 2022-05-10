@@ -124,13 +124,13 @@ headers: {
     <div>
        
     
-        <AppBar position="static">
+        <AppBar position="static" style={{backgroundColor:"#4C4B5D"}}>
         <Toolbar>
       
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Time Table
           </Typography>
-          <Typography variant="h6" component="div" onClick={view}>
+          <Typography variant="h6" component="div" onClick={view} sx={{ flexGrow: 1 }}>
             list view
           </Typography>
           <Typography variant="h6" component="div" onClick={logout}>
@@ -168,6 +168,7 @@ headers: {
     onChange={(e)=>{setDepartment(e.target.value)}}
   >
     <MenuItem value={"B.Sc Mathematics"}>B.Sc Mathematics</MenuItem>
+    <MenuItem value={"B.Sc Computer Science"}>B.Sc Computer Science</MenuItem>
     <MenuItem value={"B.Sc Physics"}>B.Sc Physics</MenuItem>
     <MenuItem value={"B.Com Corporate Secretrayship"}>B.Com Corporate Secretrayship</MenuItem>
     <MenuItem value={"B.Sc Bio-Chemistry"}>B.Sc Bio-Chemistry</MenuItem>

@@ -41,7 +41,8 @@ const Tableview = () => {
      
     <div>
          {console.log(state)}
-         <AppBar position="static">
+         <AppBar position="static" style={{backgroundColor:"#4C4B5D"}}>
+
         <Toolbar>
       
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>

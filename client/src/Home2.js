@@ -44,14 +44,15 @@ const Home2 = () => {
       />
    
     </Grid>
-    <Grid item >
-    <h1>
-    Idhaya College of Arts & Science For Women
+    <Grid item style={{textAlign:"center",paddingRight:"150px"}}>
+    <h1 style={{fontSize:'50px'}}>
+    Idhaya College</h1>
+    <h1 style={{color:"#373737"}}> of Arts & Science For Women
     </h1>
    
-    <h1>
-    MERN stack Based Time Table
-    </h1>
+    <h2 style={{fontSize:'30px'}}>
+    Time Table
+    </h2>
     </Grid>
   
     </Grid>

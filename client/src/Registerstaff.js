@@ -131,6 +131,7 @@ const Registerstaff = () => {
   >
     <MenuItem value={"B.Sc Mathematics"}>B.Sc Mathematics</MenuItem>
     <MenuItem value={"B.Sc Physics"}>B.Sc Physics</MenuItem>
+    <MenuItem value={"B.Sc Computer Science"}>B.Sc Computer Science</MenuItem>
     <MenuItem value={"B.Com Corporate Secretrayship"}>B.Com Corporate Secretrayship</MenuItem>
     <MenuItem value={"B.Sc Bio-Chemistry"}>B.Sc Bio-Chemistry</MenuItem>
     <MenuItem value={"B.Com General"}>B.Com General</MenuItem>
