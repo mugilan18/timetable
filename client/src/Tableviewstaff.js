@@ -108,7 +108,7 @@ const logout =()=>{
         
         <div style={{padding:"50px"}}>
          <h2>Time Table</h2>
-      <h4>   Department: {state.department}<br/> Year:{state.year}<br/> Semester:{state.semester}<br/> ssection:{state.section}
+      <h4>   Department: {state.department}<br/> Year:{state.year}<br/> Semester:{state.semester}<br/> Section:{state.section}
       </h4>
          </div>
          {tabledata.timeperiod?   <MaterialTable

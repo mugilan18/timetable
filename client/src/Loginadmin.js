@@ -39,6 +39,7 @@ const Loginadmin = () => {
     id="outlined-basic" 
     variant="outlined"
     size="small"
+    type="password"
     value={password}
     onChange={(e)=>{setPassword(e.target.value)}}
     />

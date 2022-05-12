@@ -212,7 +212,22 @@ headers: {
     
   </Select>
 </FormControl></Grid>
-    <Grid item>Section <input  value={section} onChange={e=>setSection(e.target.value)}></input></Grid>
+    <Grid item>
+    <FormControl >
+  {/* <InputLabel id="demo-simple-select-label">Semester</InputLabel> */}
+  <label>Section</label>
+  <Select
+    
+    value={section}
+    size="small"
+    onChange={(e)=>{setSection(e.target.value)}}
+  >
+    <MenuItem value={"a"}>A</MenuItem>
+    <MenuItem value={"b"}>B</MenuItem>
+   
+  </Select>
+</FormControl>
+      </Grid>
     </Grid>
 
 <br/><br/>

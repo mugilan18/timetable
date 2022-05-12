@@ -44,7 +44,7 @@ const Home2 = () => {
       />
    
     </Grid>
-    <Grid item style={{textAlign:"center",paddingRight:"150px"}}>
+    <Grid item style={{textAlign:"center",paddingRight:"300px"}}>
     <h1 style={{fontSize:'50px'}}>
     Idhaya College</h1>
     <h1 style={{color:"#373737"}}> of Arts & Science For Women

@@ -60,6 +60,7 @@ const Loginstaff = () => {
         <label>Password: </label>
         <TextField 
         id="outlined-basic" 
+        type="password"
         variant="outlined"
         size="small"
         value={password}

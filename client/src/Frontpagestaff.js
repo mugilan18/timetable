@@ -74,7 +74,7 @@ const Frontpagestaff = () => {
                         <Card key={index} style={{width:"300px"}}>
 <CardContent>
 
-                          Department: {cls.department}<br/> Year:{cls.year}<br/> Semester:{cls.semester}<br/> ssection:{cls.section}
+                          Department: {cls.department}<br/> Year:{cls.year}<br/> Semester:{cls.semester}<br/> Section:{cls.section}
                           </CardContent>
                           <CardActions> <Button variant='contained' onClick={()=>view(cls)}>view</Button></CardActions>
                   </Card >

@@ -115,6 +115,7 @@ const Registerstaff = () => {
         id="outlined-basic" 
         size="small"
         variant="outlined"
+        type="password"
         value={password}
         onChange={(e)=>{setPassword(e.target.value)}}
         />
@@ -179,16 +180,20 @@ const Registerstaff = () => {
   </Select>
 </FormControl>
         <br/>
-        <label>Section:</label>
-        <TextField 
-          // style={{padding:"5px",paddingLeft:"110px"}}
-          
-        id="outlined-basic" 
-        variant="outlined"
-        size="small"
-        value={section}
-        onChange={(e)=>{setSection(e.target.value)}}
-        />
+        <FormControl >
+  {/* <InputLabel id="demo-simple-select-label">Semester</InputLabel> */}
+  <label>Section</label>
+  <Select
+    
+    value={section}
+    size="small"
+    onChange={(e)=>{setSection(e.target.value)}}
+  >
+    <MenuItem value={"a"}>A</MenuItem>
+    <MenuItem value={"b"}>B</MenuItem>
+   
+  </Select>
+</FormControl>
         <br/>
         <br/>
 
@@ -203,7 +208,7 @@ const Registerstaff = () => {
                 classes && classes.map((cls, index) => {
                   return (
                       <li key={index}>
-                          Department: {cls.department}, Year:{cls.year}, Semester:{cls.semester}, ssection:{cls.section} <button onClick={()=>filter(index)}>delete</button>
+                          Department: {cls.department}, Year:{cls.year}, Semester:{cls.semester}, Section:{cls.section} <button onClick={()=>filter(index)}>delete</button>
                       </li>
                   );
               })

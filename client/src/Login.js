@@ -61,6 +61,7 @@ const Login = () => {
         <TextField 
         id="outlined-basic" 
         variant="outlined"
+        type="password"
         size="small"
         value={password}
         onChange={(e)=>{setPassword(e.target.value)}}

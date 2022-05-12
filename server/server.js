@@ -181,13 +181,21 @@ let transporter = nodemailer.createTransport({
 });
 
 
-let mailOptions = {
-  from: "idhayaclg@gmail.com",
-  to: "devadharshinivasu@gmail.com",
-  subject: 'Time table',
-  text: message 
-};
+
   const table = await TimetableSchema.findOne({ $and: [ { department:req.body.department }, { year:req.body.year } , {semester:req.body.semester} , { section:req.body.section } ] });
+  const user = await UserSchema.find({ $and: [ { department:req.body.department }, { year:req.body.year } , {semester:req.body.semester} , { section:req.body.section } ] });
+  const staff = await StaffSchema.find({class:{$elemMatch:{department:req.body.department, year:req.body.year,semester:req.body.semester,section:req.body.section}}})
+  let useremail = user.map(({ email }) => email)
+  let staffemail = staff.map(({ email }) => email)
+  let allmail =[...useremail,...staffemail]
+  let mailOptions = {
+    from: "idhayaclg@gmail.com",
+    to: allmail,
+    subject: 'Time table',
+    text: message 
+  };
+console.log("user",allmail)
+// console.log("user",user)/
 console.log("hello",table)
  if(table){
   res.json({msg:"Table already exist" })

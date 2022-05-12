@@ -144,14 +144,20 @@ const Register = () => {
         /> */}
         <br/>
         <br/>
-        <label>Section: </label>
-        <TextField 
-        id="outlined-basic" 
-        variant="outlined"
-        size="small"
-        value={section}
-        onChange={(e)=>{setSection(e.target.value)}}
-        />
+        <FormControl >
+  {/* <InputLabel id="demo-simple-select-label">Semester</InputLabel> */}
+  <label>Section</label>
+  <Select
+    
+    value={section}
+    size="small"
+    onChange={(e)=>{setSection(e.target.value)}}
+  >
+    <MenuItem value={"a"}>A</MenuItem>
+    <MenuItem value={"b"}>B</MenuItem>
+   
+  </Select>
+</FormControl>
         <br/>
         <br/>
         <label>Email: </label>
@@ -169,6 +175,7 @@ const Register = () => {
         id="outlined-basic" 
         variant="outlined"
         size="small"
+        type="password"
         value={password}
         onChange={(e)=>{setPassword(e.target.value)}}
         />
